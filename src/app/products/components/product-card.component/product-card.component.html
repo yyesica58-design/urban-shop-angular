@@ -1,0 +1,20 @@
+
+  <div class="card card-compact bg-base-100 shadow-xl animate-fadeIn h-full ">
+    <figure>
+      <img
+        [src]="product().images| productImage"
+        alt="Shoes" />
+    </figure>
+    <div class="card-body">
+      <h2 class="card-title text-info text-lg hover:underline cursor-pointer">
+        <a [routerLink]="['/product',product().slug]">
+          {{product().title}}
+        </a>
+      </h2>
+      <p>{{product().description | slice: 0:70}}...</p>
+      <div class="card-actions justify-end">
+
+        <a class="link link-warning" [routerLink]="['/product',product().slug]">Ver producto</a>
+      </div>
+    </div>
+  </div>

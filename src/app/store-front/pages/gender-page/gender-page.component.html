@@ -1,0 +1,15 @@
+<h1 class="text-3xl pt-5 font-bold">Descubre la colección
+  <span class="text-primary"> {{gender()}}</span>
+</h1>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 mt-2 gap-10">
+  @for (product of productsResource.value()?.products; track product.id) {
+    <product-card [product]="product"></product-card>
+  }
+</div>
+
+
+<div class="my-8">
+  <app-pagination  [pages]="productsResource.value()?.pages ?? 0" [currentPage]="paginationService.currentPage()"></app-pagination>
+
+</div>

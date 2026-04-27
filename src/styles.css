@@ -1,1 +1,48 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'swiper/css';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: cmyk;
+}
+
+
+@theme {
+
+
+  /* ✅ 1. Tus colores personalizados de Tailwind van aquí */
+  --color-mi-fondo: #0F0F0F;
+  --color-azul: #3B82F6;
+  --color-rosa : #EC4899
+
+
+}
+/* @font-face {
+  font-family: 'Montserrat';
+  src: url('/assets/fonts/montserrat-alternates/Montserrat-Medium.ttf') format('truetype');
+} */
+
+
+/* agrega los pesos que necesites... */
+
+/* @theme {
+  --font-sans: 'Montserrat', sans-serif;
+
+} */
+
+
+
+
+
+
+
+@keyframes fadeIn {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@utility animate-fadeIn {
+  animation: fadeIn 0.3s ease-in-out;
+}
