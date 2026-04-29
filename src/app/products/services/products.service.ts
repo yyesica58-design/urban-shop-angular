@@ -32,7 +32,7 @@ export class ProductsService {
   private http = inject(HttpClient)
 
   private productsCache = new Map <string,ProductsResponse>()
-  private productCache =new Map <string,Product>()
+  private productCache = new Map <string,Product>()
 
 
   getProducts(options:Options):Observable<ProductsResponse>{
@@ -134,21 +134,44 @@ export class ProductsService {
     // .pipe(tap((product)=> this.updateProductCache(product)))
   }
 
+  // updateProductCache(product: Product){
+  //   const productId = product.id;
+
+  //   this.productCache.set(productId,product)
+
+  //   this.productsCache.forEach((productsResponse)=> {
+  //     productsResponse.products = productsResponse.products.map(
+  //       (curruentProduct) => {
+  //         return curruentProduct.id === productId ? product : curruentProduct
+  //       }
+  //     )
+  //   })
+
+  //   console.log('cache Actualizado')
+  // }
+
   updateProductCache(product: Product){
-    const productId = product.id;
+  const productId = product.id;
 
-    this.productCache.set(productId,product)
+  // actualiza el caché individual
+  this.productCache.set(productId, product);
 
-    this.productsCache.forEach((productsResponse)=> {
-      productsResponse.products = productsResponse.products.map(
-        (curruentProduct) => {
-          return curruentProduct.id === productId ? product : curruentProduct
+  // actualiza el producto dentro de cada lista cacheada
+  this.productsCache.forEach((productsResponse) => {
+    productsResponse.products = productsResponse.products.map(
+      (currentProduct) => {
+        if(currentProduct.id === productId){
+          return {
+            ...product,  // ← usa todo el producto nuevo incluyendo imágenes
+          };
         }
-      )
-    })
+        return currentProduct;
+      }
+    );
+  });
 
-    console.log('cache Actualizado')
-  }
+  console.log('cache Actualizado');
+}
 
   uploadImages(images?: FileList):Observable<string[]>{
     if(!images) return of([])
