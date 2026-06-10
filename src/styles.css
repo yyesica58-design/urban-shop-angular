@@ -5,7 +5,7 @@
 @import 'swiper/css/pagination';
 @import "tailwindcss";
 @plugin "daisyui" {
-  themes: cmyk;
+  themes: night;
 }
 
 

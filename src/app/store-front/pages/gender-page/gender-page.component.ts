@@ -7,10 +7,11 @@ import { PaginationComponent } from '@shared/components/pagination/pagination.co
 import { map } from 'rxjs';
 import { Pagination } from 'swiper/modules';
 import { PaginationService } from '../../../shared/components/pagination/pagination.service';
+import { UpperCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-gender-page',
-  imports: [ProductCardComponent,PaginationComponent],
+  imports: [ProductCardComponent,PaginationComponent,UpperCasePipe],
   templateUrl: './gender-page.component.html',
 })
 export class GenderPageComponent {

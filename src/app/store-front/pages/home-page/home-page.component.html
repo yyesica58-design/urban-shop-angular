@@ -7,7 +7,14 @@
     <product-card [product]="product" ></product-card>
   }
   @empty{
-    <p>No hay productos</p>
+  <p class="col-span-full text-center py-10">
+  <span class="text-3xl font-bold block mb-3">¡Ya casi está todo listo!</span>
+  <i class="bi bi-arrow-repeat text-5xl text-primary animate-spin block mb-4"></i>
+  <span class="text-gray-500 text-sm">
+    Estamos obteniendo la información, esto puede tomar hasta 15 minutos la primera vez.<br>
+    Puedes dejar esta pestaña abierta y volver en un momento.
+  </span>
+  </p>
   }
 </div>
 <div class="my-8">

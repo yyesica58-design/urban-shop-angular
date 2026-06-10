@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { User } from '@auth/interfaces/user.interface';
 import { Gender, Product, ProductsResponse } from '@products/interfaces/product.interface';
-import { forkJoin, map, Observable, of, tap, switchMap } from 'rxjs';
+import { forkJoin, map, Observable, of, tap, switchMap, delay } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 const baseUrl = environment.baseUrl
@@ -54,7 +54,7 @@ export class ProductsService {
         }
       }
     ).pipe(
-    tap((resp)=> console.log(resp)),
+    // tap((resp)=> console.log(resp)),
     tap((resp) => this.productsCache.set(key,resp))
     )
   }
@@ -69,8 +69,9 @@ export class ProductsService {
     return this.http.get<Product>(
       `${baseUrl}/products/${idSlug}`
     ).pipe(
-      tap((product)=> console.log(product)),
-      tap((product)=> this.productCache.set(key,product))
+      // tap((product)=> console.log(product)),
+      tap((product)=> this.productCache.set(key,product)),
+
     )
   }
 
